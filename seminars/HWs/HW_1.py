@@ -8,7 +8,8 @@ import subprocess
 def check_command_output(command, text):
     try:
         output = subprocess.run('cat /etc/os-release', shell=True, stdout=subprocess.PIPE, encoding='utf-8')
-        return text in output
+        if text in result.stdout and result.returncode == 0:
+        return True
     except (subprocess.CalledProcessError, FileNotFoundError):
         return False
 
